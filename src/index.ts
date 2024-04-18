@@ -16,7 +16,6 @@ try {
 	const gitHubToken = getInput("gitHubToken", { required: false });
 	const branch = getInput("branch", { required: false });
 	const workingDirectory = getInput("workingDirectory", { required: false });
-	const wranglerVersion = getInput("wranglerVersion", { required: false });
 
 	const getProject = async () => {
 		const response = await fetch(
@@ -46,7 +45,7 @@ try {
       $ export CLOUDFLARE_ACCOUNT_ID="${accountId}"
     }
   
-    $$ npx wrangler@${wranglerVersion} pages publish "${directory}" --project-name="${projectName}" --branch="${branch}"
+    $$ wrangler pages publish "${directory}" --project-name="${projectName}" --branch="${branch}"
     `;
 
 		const response = await fetch(
